@@ -6,6 +6,8 @@ author: jmprieur
 
 Azure AD Javascript Getting Started
 ====================
+This is a fork of https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi.git
+
 This sample demonstrates the use of ADAL for JavaScript for securing an single page app written independently of any frameworks, implemented with an ASP.NET Web API backend.
 
 ADAL for Javascript is an open source library.  For distribution options, source code, and contributions, check out the ADAL JS repo at https://github.com/AzureAD/azure-activedirectory-library-for-js.
@@ -62,10 +64,6 @@ Clean the solution, rebuild the solution, and run it.
 You can trigger the sign in experience by either clicking on the sign in link on the top right corner, or by clicking directly on the Todo List tab.
 Explore the sample by signing in, adding items to the To Do list, removing the user account, and starting again. 
 
-## How To Deploy This Sample to Azure
-
-Coming soon.
-
 ## About the Code
 
 The key files containing authentication logic are the following:
@@ -77,4 +75,4 @@ The key files containing authentication logic are the following:
 **todoListCtrl.js**- shows how to take advantage of the acquireToken() method in ADAL to get a token for accessing a resource.
 
 **userDataCtrl.js** - shows how to extract user information from the cached id_token.
-   
+

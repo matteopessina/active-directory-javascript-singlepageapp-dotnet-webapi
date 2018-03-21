@@ -5,6 +5,13 @@
     // Instantiate the ADAL AuthenticationContext
     var authContext = new AuthenticationContext(config);
 
+    // https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    function parseJwt(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    };
+
     function refreshViewData() {
 
         // Empty Old View Contents
@@ -21,6 +28,11 @@
                 return;
             }
 
+            var tokenObj = parseJwt(token);
+
+            var isCurrentUserATaskCreator = $.inArray("TaskCreator", tokenObj.roles);
+
+            
             // Get TodoList Data
             $.ajax({
                 type: "GET",
@@ -44,13 +56,20 @@
                 // Update the UI
                 $loading.hide();
                 $dataContainer.html(output);
-
+                console.log('fine done');
             }).fail(function () {
                 printErrorMessage('Error getting todo list data')
             }).always(function () {
 
                 // Register Handlers for Buttons in Data Table
-                registerDataClickHandlers();
+                if (isCurrentUserATaskCreator === 1) {
+                    registerDataClickHandlers()
+                    $('.input-group').show();
+                    $('.input-group').css('display', 'table');
+                    $('.view-data-mode-delete').show();
+                }
+
+                console.log('fine always');
             });
         });
     };

@@ -1,3 +1,7 @@
 ﻿.app-error {
     color:red;
 }
+
+.input-group, .view-data-mode-delete {
+    display: none;
+}
