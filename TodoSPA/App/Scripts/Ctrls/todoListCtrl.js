@@ -5,13 +5,6 @@
     // Instantiate the ADAL AuthenticationContext
     var authContext = new AuthenticationContext(config);
 
-    // https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-    function parseJwt(token) {
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
-    };
-
     function refreshViewData() {
 
         // Empty Old View Contents
@@ -28,10 +21,13 @@
                 return;
             }
 
-            var tokenObj = parseJwt(token);
+            var user = authContext.getCachedUser();
 
-            var isCurrentUserATaskCreator = $.inArray("TaskCreator", tokenObj.roles);
+            var isCurrentUserATaskCreator = false;
 
+            if (user.profile.hasOwnProperty('roles')) {
+                isCurrentUserATaskCreator = $.inArray('TaskCreator', user.profile['roles']);
+            }
             
             // Get TodoList Data
             $.ajax({
