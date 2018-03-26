@@ -166,6 +166,7 @@
     <Content Include="App\Content\app.css" />
     <Content Include="App\Scripts\adal.js" />
     <Content Include="App\Scripts\app.js" />
+    <Content Include="App\Scripts\appVariables.js" />
     <Content Include="App\Scripts\Ctrls\homeCtrl.js" />
     <Content Include="App\Scripts\Ctrls\todoListCtrl.js" />
     <Content Include="App\Scripts\Ctrls\userDataCtrl.js" />
@@ -183,7 +184,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ConfidentialAppSettings.config" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -205,7 +208,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>37728</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44302/</IISUrl>
+          <IISUrl>https://localhost:44319/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

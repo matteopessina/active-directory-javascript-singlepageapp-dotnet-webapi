@@ -12,11 +12,14 @@ namespace TodoSPA
     {
         public void ConfigureAuth(IAppBuilder app) {
 
+            var audience = ConfigurationManager.AppSettings["ida:Audience"];
+            var tenant = ConfigurationManager.AppSettings["ida:Tenant"];
+
             app.UseWindowsAzureActiveDirectoryBearerAuthentication(
                 new WindowsAzureActiveDirectoryBearerAuthenticationOptions
                 {
-                    Audience = ConfigurationManager.AppSettings["ida:Audience"],
-                    Tenant = ConfigurationManager.AppSettings["ida:Tenant"],
+                    Audience = audience,
+                    Tenant = tenant,
                 });
         }
     }
